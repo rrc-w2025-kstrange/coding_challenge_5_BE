@@ -34,7 +34,7 @@ export const getAllResources = (): Resource[] => {
 export const getResourceById = async (id: number): Promise<Resource> => {
     const resource = resources.find(resources => resources.id === id);
 
-    if (!resources) {
+    if (!resource) {
         throw new AppError(
             "Resource not found",
             "RESOURCE_NOT_FOUND",
@@ -46,7 +46,7 @@ export const getResourceById = async (id: number): Promise<Resource> => {
 };
 
 
-export const createResource = (data: ResourceInput): Resource => {
+export const createResource = (data: Resource): Resource => {
     const nextId =
       resources.length > 0
             ? Math.max(...resources.map(resource => resource.id)) + 1
@@ -54,10 +54,11 @@ export const createResource = (data: ResourceInput): Resource => {
 
     const newResource: Resource = {
         id: nextId,
-        applicant: data.applicant,
-        amount: data.amount,
-        status: "pending",
-        createdAt: new Date().toISOString()
+        title: data.title,
+        type: data.type,
+        url: data.url,
+        description: data.description,
+        createdAt: data.createdAt
     }
 
     resources.push(newResource)
