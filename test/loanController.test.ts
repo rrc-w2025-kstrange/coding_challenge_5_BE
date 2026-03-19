@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import * as loanController from "../src/api/v1/controllers/loanController";
+import * as loanController from "../src/api/v1/controllers/resourceController";
 import * as loanService from "../src/api/v1/services/resourceService";
 import { HTTP_STATUS } from "../src/constants/httpConstants";
 import { AppError } from "../src/api/v1/errors/errors";

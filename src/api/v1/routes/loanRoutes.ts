@@ -5,7 +5,7 @@ import {
     getLoanById,
     updateLoan,
     deleteLoan
-} from '../controllers/loanController';
+} from '../controllers/resourceController';
 import authenticate from "../middleware/authenticate";
 import authorize from "../middleware/authorize";
 

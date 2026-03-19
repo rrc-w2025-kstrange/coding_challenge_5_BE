@@ -26,12 +26,12 @@ let resources: Resource[] = [
 
 
 
-export const getAllResources = (): Resource[] => {
+export const getAllResourcesService = (): Resource[] => {
     return resources
 }
 
 
-export const getResourceById = async (id: number): Promise<Resource> => {
+export const getResourceByIdService = async (id: number): Promise<Resource> => {
     const resource = resources.find(resources => resources.id === id);
 
     if (!resource) {
@@ -46,7 +46,7 @@ export const getResourceById = async (id: number): Promise<Resource> => {
 };
 
 
-export const createResource = (data: Resource): Resource => {
+export const createNewResource = (data: Resource): Resource => {
     const nextId =
       resources.length > 0
             ? Math.max(...resources.map(resource => resource.id)) + 1
@@ -67,7 +67,7 @@ export const createResource = (data: Resource): Resource => {
 }
 
 
-export const updateResource = async (id: number, updateResourceDetails: Partial<Resource>): Promise<void> => {
+export const updateResourceById = async (id: number, updateResourceDetails: Partial<Resource>): Promise<void> => {
 
     const resource = resources.find(resource => resource.id);
 
@@ -83,7 +83,7 @@ export const updateResource = async (id: number, updateResourceDetails: Partial<
 };
 
 
-export const deleteResource = async (id: number): Promise<void> => {
+export const deleteResourceById = async (id: number): Promise<void> => {
 
     const index = resources.findIndex(resource => resource.id);
 
