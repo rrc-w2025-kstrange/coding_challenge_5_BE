@@ -1,0 +1,9 @@
+node_modules/
+dist/
+
+# Firebase service key
+fb_key.json
+
+# Logs
+logs/
+*.log
