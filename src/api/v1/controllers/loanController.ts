@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { getAllLoansService, createNewLoan, getLoanByIdService, updateLoanById, deleteLoanById } from "../services/loanService";
+import { getAllLoansService, createNewLoan, getLoanByIdService, updateLoanById, deleteLoanById } from "../services/resourceService";
 import { HTTP_STATUS } from "../../../constants/httpConstants";
 
 
