@@ -1,6 +1,6 @@
 import { AppError } from "../errors/errors";
 import { HTTP_STATUS } from "../../../constants/httpConstants";
-import { Loan, LoanInput } from "../models/loan.model";
+import { Resource, ResourceInput } from "../models/Resource.model";
 
 /**
  * Sample in-memory resource data to simulate a database.
@@ -52,7 +52,7 @@ export const createResource = (data: ResourceInput): Resource => {
             ? Math.max(...resources.map(resource => resource.id)) + 1
             : 1
 
-    const newResource: Loan = {
+    const newResource: Resource = {
         id: nextId,
         applicant: data.applicant,
         amount: data.amount,
