@@ -1,6 +1,6 @@
 node_modules/
 dist/
-
+.env
 # Firebase service key
 fb_key.json
 
