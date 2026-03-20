@@ -21,6 +21,22 @@ let resources: Resource[] = [
         url: "https://example.com/ts-basics",
         description: "Introduction to TypeScript",
         createdAt: new Date().toISOString()
+    },
+    {
+        id: 3,
+        title: "REST API Design",
+        type: "article",
+        url: "https://example.com/rest-design",
+        description: "Best practices for REST API design",
+        createdAt: new Date().toISOString()
+    },
+    {
+        id: 4,
+        title: "Jest Testing Tutorial",
+        type: "tutorial",
+        url: "https://example.com/jest-tutorial",
+        description: "Complete guide to testing with Jest",
+        createdAt: new Date().toISOString()
     }
 ];
 
@@ -46,20 +62,20 @@ export const getResourceByIdService = async (id: number): Promise<Resource> => {
 };
 
 
-export const createNewResource = (data: Resource): Resource => {
+export const createNewResource = (data: ResourceInput): Resource => {
     const nextId =
       resources.length > 0
             ? Math.max(...resources.map(resource => resource.id)) + 1
             : 1
 
     const newResource: Resource = {
-        id: nextId,
-        title: data.title,
-        type: data.type,
-        url: data.url,
-        description: data.description,
-        createdAt: data.createdAt
-    }
+    id: nextId,
+    title: data.title,
+    type: data.type,
+    url: data.url,
+    description: data.description,
+    createdAt: new Date().toISOString()
+    };
 
     resources.push(newResource)
 
@@ -69,7 +85,7 @@ export const createNewResource = (data: Resource): Resource => {
 
 export const updateResourceById = async (id: number, updateResourceDetails: Partial<Resource>): Promise<void> => {
 
-    const resource = resources.find(resource => resource.id);
+    const resource = resources.find(resource => resource.id === id);
 
     if (!resource) {
         throw new AppError(
@@ -79,13 +95,13 @@ export const updateResourceById = async (id: number, updateResourceDetails: Part
         );
     }
 
-    Object.assign(resources, updateResourceDetails);
+    Object.assign(resource, updateResourceDetails);
 };
 
 
 export const deleteResourceById = async (id: number): Promise<void> => {
 
-    const index = resources.findIndex(resource => resource.id);
+    const index = resources.findIndex(resource => resource.id === id);
 
     if (index === -1) {
         throw new AppError(

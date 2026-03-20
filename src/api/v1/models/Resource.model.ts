@@ -8,6 +8,8 @@ export interface Resource {
 }
 
 export type ResourceInput = {
-    id: number;
     title: string;
-}
+    type: string;
+    url: string;
+    description: string;
+};
